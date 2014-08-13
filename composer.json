@@ -1,0 +1,10 @@
+{
+    "name": "flexpress/component-routing",
+    "description": "Routes system for WordPress",
+    "autoload": {
+        "psr-4": {
+            "FlexPress\\Components\\Routing\\": "src/FlexPress/Components/Routing/"
+        }
+    }
+
+}
