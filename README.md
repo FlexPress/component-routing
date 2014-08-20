@@ -46,3 +46,39 @@ $router->addRoute(
 );
 $router->route();
 ```
+
+## Filters
+
+Filters are can be reused on multiple routers to keep your code DRY. Lets create a simple filter for is_search():
+
+```
+$router = $pimple['router'];
+$router->addFilter('isSearch', function(){
+  return is_search();
+});
+```
+That's it, dead simple eh! So what have we done here? The first paramater of addFilter lets you speficy a name for it, the second param is the function, the same as the one you used in the route.
+
+Now how do we add that to a route? Instead of passing a single function as the second paramater you can pass an array, of which can either include multiple functions/filters or both. Lets create an example that has both a function and a filter:
+
+```
+$router = $pimple['router'];
+
+$router->addFilter('isSearch', function(){
+  return is_search();
+});
+
+$router->addRoute(
+    'searchController',
+    array(
+      'isSearch',
+      function () {
+        return is_user_logged_in();
+      }
+    )
+);
+
+$router->route();
+```
+
+This example, will route to the searchControllers index action when is a user is loggedin and when it is_search().
