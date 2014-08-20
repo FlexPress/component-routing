@@ -82,3 +82,16 @@ $router->route();
 ```
 
 This example, will route to the searchControllers index action when is a user is loggedin and when it is_search().
+
+## Public methods - Route
+- setCallable($callableExpression) - Set the callable using a string with the format 'controller@action'.
+- addConditionsFromArray(array $expressions) - Adds conditions to the route from the given array.
+- run() - Runs through all the callable functions provided, if all are met call the given callable.
+
+# Public methods - Router
+- route() - Runs through all the routes and runs them.
+- addRoute($callable, $conditions) - Used to add a route to the router for a given callable and conditions.
+- addFilter($name, $function) - Used to add a filter to the router for a given name and function.
+
+# Protected methods - Router
+- replaceFilterFunctions(array $conditions) - Replaces the string conditions(filters) with the filter callable.
