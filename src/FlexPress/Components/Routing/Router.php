@@ -44,6 +44,9 @@ class Router
             }
             $this->routes->next();
         }
+
+        throw new \RuntimeException("FlexPress router: No route found - please make sure you have setup routes.");
+
     }
 
     /**
